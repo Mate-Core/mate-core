@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mate Core Surprise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/logo.png" type="image/png"> <!-- Added a favicon -->
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/logo.png" alt="Mate Core Logo" class="logo">
+        </header>
+        <main>
+            <div class="intro" id="intro-message">
+                <p>Te pensás que puedo hacer una app para ver acciones y eso? Al menos una pagina web puedo armar</p>
+                <div class="click-box"> PERO PARA , toca aca 👆 , te tengo una sorpresa</div>
+            </div>
+            <!-- The modal will be hidden by default using CSS and toggled with JS -->
+            <div id="witness-modal" class="modal">
+                <div class="modal-content">
+                    <h2>¿Querés ser mi testigo de civil este viernes?</h2>
+                    <div class="modal-actions">
+                        <button id="btn-yes" class="button button-yes">Si, vaquitaaa</button>
+                        <button id="btn-no" class="button button-no">No , 😞</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

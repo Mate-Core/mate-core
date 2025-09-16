@@ -1,0 +1,188 @@
+:root {
+    /* Color Palette */
+    --background-dark: #071126;
+    --background-darker: #081428;
+    --card-background: #0b1220;
+    --text-light: #e6eef8;
+    --button-yes: #10b981;
+    --button-no: #ef4444;
+    --shadow-color: rgba(2, 6, 23, 0.5);
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--background-dark) 0%, var(--background-darker) 100%);
+    color: var(--text-light);
+    text-align: center;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+body.modal-open {
+    overflow: hidden;
+    /* Prevent scrolling when modal is open */
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px 0;
+    /* Add some vertical padding */
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-bottom: 30px;
+    /* Increased margin */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    /* Subtle glow */
+}
+
+.intro {
+    background: var(--card-background);
+    padding: 25px;
+    /* Slightly more padding */
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    /* Stronger shadow */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    /* Smooth hover effect */
+}
+
+.intro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.intro p {
+    margin: 0;
+    font-size: 1.1rem;
+    /* Slightly larger text */
+}
+
+/* Modal Styling */
+.modal {
+    display: flex;
+    /* Always flexbox, hidden by opacity/pointer-events */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    /* Darker overlay */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Hidden by default */
+    pointer-events: none;
+    /* Disables interaction when hidden */
+    transition: opacity 0.3s ease-out;
+    /* Smooth fade in/out */
+    z-index: 1000;
+    /* Ensure it's on top */
+}
+
+.modal.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    /* Enables interaction when visible */
+}
+
+.modal-content {
+    background: var(--card-background);
+    padding: 30px;
+    /* More padding */
+    border-radius: 12px;
+    text-align: center;
+    max-width: 350px;
+    /* Limit content width */
+    width: 90%;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transform: translateY(20px);
+    /* Start slightly off screen */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    /* Also hidden by default */
+}
+
+.modal.is-visible .modal-content {
+    transform: translateY(0);
+    /* Slide into view */
+    opacity: 1;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    /* Stack buttons on small screens */
+    gap: 15px;
+    /* Space between buttons */
+}
+
+button.button {
+    margin: 0;
+    /* Reset margin from previous button style */
+    padding: 14px 25px;
+    /* More padding for bigger buttons */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-grow: 1;
+    /* Allow buttons to grow */
+}
+
+button.button:hover {
+    transform: translateY(-2px);
+}
+
+button.button:active {
+    transform: translateY(0);
+}
+
+button.button-yes {
+    background: var(--button-yes);
+}
+
+button.button-yes:hover {
+    background: #0e9f6e;
+    /* Slightly darker green */
+}
+
+button.button-no {
+    background: var(--button-no);
+}
+
+button.button-no:hover {
+    background: #cc3737;
+    /* Slightly darker red */
+}
+
+/* Responsive adjustments */
+@media (min-width: 480px) {
+    .modal-actions {
+        flex-direction: row;
+        /* Buttons side-by-side on larger screens */
+        justify-content: center;
+    }
+}
